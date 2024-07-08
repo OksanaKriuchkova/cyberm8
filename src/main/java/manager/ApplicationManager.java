@@ -9,7 +9,8 @@ import java.time.Duration;
 public class ApplicationManager {
 
     WebDriver wd;
-    HelperUser helperUser;
+
+    LoginPageAction loginPageAction;
 
     public void init(){
 
@@ -21,12 +22,14 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wd.navigate().to("https://testing.cloud.cyberm8.com");
 
-        helperUser = new HelperUser(wd);
+      //  helperUser = new HelperUser(wd);
+        loginPageAction = new LoginPageAction(wd);
 
     }
 
-    public HelperUser getHelperUser() {
-        return helperUser;
+    public LoginPageAction getLoginPageAction() {
+
+        return loginPageAction;
     }
 
     public void stop(){

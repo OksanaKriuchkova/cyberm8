@@ -1,33 +1,27 @@
 package tests;
 
+import manager.LoginPageAction;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
 
-    @BeforeMethod
-    public void preCondition(){
-        if(app.getHelperUser().isLogged()){
-            app.getHelperUser().logout();
-        }
-    }
+    private final String username = "admin";
+    private final String password = "REZ1ucp2drw8gdp@efj";
+
+    //    @BeforeMethod
+ //   public void preCondition(){
+ //       if(app.getHelperUser().isLogged()){
+//            app.getHelperUser().logout();
+ //       }
+ //   }
 
     @Test
     public void loginSuccess(){
-        app.getHelperUser().fillLoginRegistrationForm("admin","REZ1ucp2drw8gdp@efj");
-        app.getHelperUser().submitLogin();
+        app.getLoginPageAction().fillLoginRegistrationForm(username,password);
+        app.getLoginPageAction().submitLogin();
 
-       Assert.assertTrue(app.getHelperUser().isLogged());
-
-    }
-
-    @Test
-    public void loginSuccess2(){
-        app.getHelperUser().fillLoginRegistrationForm("admin","REZ1ucp2drw8gdp@efj");
-        app.getHelperUser().submitLogin();
-
-        Assert.assertTrue(app.getHelperUser().isLogged());
+        Assert.assertTrue(app.getLoginPageAction().isLogged());
 
     }
 
