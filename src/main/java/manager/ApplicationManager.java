@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class ApplicationManager {
 
-    WebDriver wd;
+    public WebDriver wd;
 
     LoginPageAction loginPageAction;
 
@@ -20,15 +20,13 @@ public class ApplicationManager {
         wd = new ChromeDriver(options);
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        wd.navigate().to("https://testing.cloud.cyberm8.com");
 
-      //  helperUser = new HelperUser(wd);
-        loginPageAction = new LoginPageAction(wd);
+        wd.navigate().to("https://testing.cloud.cyberm8.com");
 
     }
 
     public LoginPageAction getLoginPageAction() {
-
+        loginPageAction = new LoginPageAction(wd);
         return loginPageAction;
     }
 

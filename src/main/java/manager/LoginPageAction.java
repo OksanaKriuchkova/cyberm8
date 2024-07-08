@@ -4,19 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageAction extends HelperBase {
     public LoginPageAction(WebDriver wd) {
         super(wd);
+        PageFactory.initElements(wd,this);
     }
 
-    @FindBy(id = "//input[@id='username']")
+    @FindBy(id = "username")
     private WebElement usernameInput;
 
-    @FindBy(id = "//input[@id='password']")
+    @FindBy(id = "password")
     private WebElement passwordInput;
 
-    @FindBy(id = "//button[@id='loginBtn']")
+    @FindBy(id = "loginBtn")
     private WebElement loginButton;
 
     public void fillLoginRegistrationForm(String user, String password){
@@ -24,20 +26,16 @@ public class LoginPageAction extends HelperBase {
         type(usernameInput,user);
 
         type(passwordInput,password);
+
+        click(loginButton);
     }
 
-    public void submitLogin(){
-
-        click((WebElement) By.xpath("//button[@id='loginBtn']"));
-    }
 
     public boolean isLogged(){
-        return  isElementPresent((WebElement) By.xpath("//div[@class='right-top-header']/div/a"));
+        WebElement adminMenu = wd.findElement(By.xpath("//div[@class='right-top-header']/div/a"));
+        return  isElementPresent(adminMenu);
+
 
     }
 
-    public void logout(){
-        click((WebElement) By.xpath("//div[@class='right-top-header']/div/a[1]"));
-        click((WebElement) By.xpath("//a[normalize-space()='Sign Out']"));
-    }
 }
