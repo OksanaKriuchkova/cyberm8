@@ -1,6 +1,5 @@
 package tests;
 
-import manager.LoginPageAction;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -28,7 +28,7 @@ public class HelperBase {
 
     public void click(WebElement element){
 
-        new WebDriverWait(wd,Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(wd,Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(element));
         element.click();
 
     }

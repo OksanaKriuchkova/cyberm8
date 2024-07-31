@@ -12,6 +12,8 @@ public class ApplicationManager {
 
     LoginPageAction loginPageAction;
 
+    TaskListPageAction tasklist;
+
     public void init(){
 
         ChromeOptions options = new ChromeOptions();
@@ -22,6 +24,8 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         wd.navigate().to("https://testing.cloud.cyberm8.com");
+
+        tasklist = new TaskListPageAction(wd);
 
     }
 
@@ -37,4 +41,8 @@ public class ApplicationManager {
     }
 
 
+    public TaskListPageAction getTaskList() {
+
+        return new TaskListPageAction(wd);
+    }
 }
